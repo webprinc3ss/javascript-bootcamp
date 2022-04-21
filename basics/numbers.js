@@ -9,8 +9,8 @@
 
 //Challenge Area
 
-let studentScore = 18
-let maxScore = 20
+let studentScore = 41
+let maxScore = 100
 //percent 90
 let percent = (studentScore/maxScore) * 100
 // 18/20 * 100 = percent
