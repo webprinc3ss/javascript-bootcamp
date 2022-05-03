@@ -23,3 +23,8 @@ return total * tipPercent
 let tip = getTip(50)
 tipDecimal = tip.toFixed(2)
 console.log('Tip: $' + tipDecimal)
+
+//Template strings
+let name = 'Vikram'
+age = 12
+console.log(`Hey my name is ${name}! I am ${age} years old.`)
