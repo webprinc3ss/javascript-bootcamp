@@ -9,20 +9,27 @@
 //}
 
 let getScore = function (score, total) {
-    let percent = score/total * 100
+    let percent = (score / total) * 100
+    let letterGrad = ''
 
-    if (percent > 89) {
-        return `You got an A ${percent}%!`
-    } else if (percent < 90 && percent > 79) {
-        return `You got an B ${percent}%!`
-    } else if (percent < 80 && percent > 69) {
-        return `You got an C ${percent}%!`
-    } else if (percent < 70 && percent > 59) {
-        return `You got an D ${percent}%!`
+    if (percent >= 90) {
+        letterGrade = 'A'
+
+    } else if (percent >= 80) {
+        letterGrade = 'B'
+
+    } else if (percent >= 70) {
+        letterGrade = 'C'
+
+    } else if (percent >= 60) {
+        letterGrade = 'D'
+
     } else {
-        return `You got an F ${percent}%!`
+        letterGrade = 'F'
+        
     }
+    return `You got an ${letterGrade} ${percent}%!`
 }
 
-let studentScore = getScore(15, 20)
+let studentScore = getScore(10, 20)
 console.log(studentScore)
