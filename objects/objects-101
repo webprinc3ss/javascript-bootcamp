@@ -1,0 +1,25 @@
+let myBook = {
+    title: '1984',
+    author: 'George Orwell',
+    pageCount: 326
+}
+
+console.log (`${myBook.title} by ${myBook.author}`)
+
+myBook.title = 'Animal Farm'
+console.log (`${myBook.title} by ${myBook.author}`)
+
+//Challenge area
+
+// Person: name, age, location
+
+// Danielle is 53 and lives in Las Vegas.
+// Increase age by one and print message again
+
+let person = {
+    name: 'Danielle',
+    age: 53,
+    location: 'Las Vegas'
+}
+
+console.log(person)
