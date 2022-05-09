@@ -31,15 +31,14 @@ console.log(bookSummary.pageCountSummary)
         //console.log('celcius: ' + celcius)
         //console.log('kelvin: ' + kelvin)
 
-let getTemp = function (farenheit) {
-    let celcius = (farenheit - 32) / 1.8
-    let kelvin = celcius + 273.15
+let convertTemp = function (farenheit) {
+
     return {
-    f: farenheit,
-    c: celcius,
-    k: kelvin
+        farenheit: farenheit,
+        kelvin: (farenheit + 459.67) / (5 / 9),
+        celcius: (farenheit - 32) * (5 / 9)
     }
 }
 
-let temp = getTemp(100)
-console.log (`Its ${temp.f.toFixed(0)} degrees farenheit, ${temp.c.toFixed(0)} degrees celcius, or ${temp.k.toFixed(0)} degrees kelvin outside!`)
+let temp = convertTemp(100)
+console.log (`Its ${temp.farenheit.toFixed(0)} degrees farenheit, ${temp.celcius.toFixed(0)} degrees celcius, or ${temp.kelvin.toFixed(0)} degrees kelvin outside!`)
