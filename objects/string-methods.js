@@ -23,9 +23,9 @@ console.log(myName.trim())
 //length is more than 8 - and it doesn't contain word 'password'
 
 let isValidPassword = function (password) {
-    return password.length < 9 || password.includes('password') ? false
-           : true
-
+    //return password.length < 9 || password.includes('password') ? false
+          // : true
+    return password.length > 8 && !password.includes('password')
 
 }
 
