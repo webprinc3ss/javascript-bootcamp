@@ -32,7 +32,7 @@ let makeGuess = function (guess) {
     let max = 5
     randomNum = Math.floor(Math.random() * (max-min + 1)) + min
     console.log (randomNum)
-    return guess == randomNum 
+    return guess === randomNum 
 }
 
-console.log(makeGuess(2))
+console.log(makeGuess(3))
