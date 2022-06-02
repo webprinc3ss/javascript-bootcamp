@@ -10,6 +10,17 @@ todos.splice(4,4,'Bake a Cake')
 todos.shift()
 
 console.log(`You have ${todos.length} todos!`)
-console.log(todos)
+todos.forEach(
+    function(item,index){
+        console.log(index+1 + '. ' + item)
+    }
+)
+
+//1. The first item
+//2. The second item
+//3. The third item
+
+
+
 // console.log(`Todo 1: ${todos[0]}`)
 // console.log(`Todo 5: ${todos[4]}`)

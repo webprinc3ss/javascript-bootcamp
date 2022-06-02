@@ -10,6 +10,12 @@ const notes = ['Note 1', 'Note 2', 'Note 3']
 
 notes[2]='This is now the new notes three'
 
+notes.forEach(
+    function(item, index) {
+        console.log(item)
+        console.log(index)
+})
+
 console.log(notes.length)
 console.log(notes)
 //console.log(notes[notes.length-1]) //Grab last item from list
