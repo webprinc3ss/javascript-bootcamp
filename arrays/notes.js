@@ -10,6 +10,7 @@ const notes = ['Note 1', 'Note 2', 'Note 3']
 
 notes[2]='This is now the new notes three'
 
+//Callback function - function in a function
 notes.forEach(
     function(item, index) {
         console.log(item)
@@ -19,3 +20,14 @@ notes.forEach(
 console.log(notes.length)
 console.log(notes)
 //console.log(notes[notes.length-1]) //Grab last item from list
+
+// Counting ... 1
+    //parameters: intializer (only runs once); condition (check it); final expression (increments)
+        //count ++ = count + 1
+for (let count = 2; count >=0; count--) {
+console.log (count)
+}
+
+for (let count = notes.length-1; count >= 0; count --) {
+    console.log (notes[count])
+}

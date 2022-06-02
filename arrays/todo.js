@@ -16,9 +16,11 @@ todos.forEach(
     }
 )
 
-//1. The first item
-//2. The second item
-//3. The third item
+for (let count = 0; count < todos.length; count++  ) {
+    const num = count + 1
+    const todo = todos[count]
+    console.log(`${num}. ${todo}`)
+}
 
 
 
