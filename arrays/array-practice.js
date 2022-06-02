@@ -1,3 +1,4 @@
+//https://avantutor.com/blog/10-simple-javascript-for-loop-exercises/
 // Get the sum of two arrays…actually the sum of all their elements.
 // P.S. Each array includes only integer numbers. Output is a number too.
 
@@ -15,22 +16,22 @@ let sum2 = 0
 
 let arraySums = function () {
     for (let count = 0; count < array1.length; count++) {
-    sum1 = sum1 + array1[count]
-    // if (count = array1.length) {
-    //     console.log(sum1)
-    // }
-}
-// console.log(sum1)
+        sum1 = sum1 + array1[count]
+        // if (count = array1.length) {
+        //     console.log(sum1)
+        // }
+    }
+    // console.log(sum1)
 
-for (let count = 0; count < array2.length; count++) {
-    sum2 = sum2 + array2[count]
-    // if (count = array1.length) {
-    //     console.log(sum1)
-    // }
-}
-// console.log(sum2)
+    for (let count = 0; count < array2.length; count++) {
+        sum2 = sum2 + array2[count]
+        // if (count = array1.length) {
+        //     console.log(sum1)
+        // }
+    }
+    // console.log(sum2)
 
-return sum1 + sum2
+    return sum1 + sum2
 
 }
 
