@@ -8,8 +8,8 @@
     //return `A ${percent}% tip on $${total} would be $${tip}`
 //}
 
-let getScore = function (score, total) {
-    let percent = (score / total) * 100
+const getScore = function (score, total) {
+    const percent = (score / total) * 100
     let letterGrad = ''
 
     if (percent >= 90) {
@@ -31,5 +31,5 @@ let getScore = function (score, total) {
     return `You got an ${letterGrade} ${percent}%!`
 }
 
-let studentScore = getScore(10, 20)
+const studentScore = getScore(10, 20)
 console.log(studentScore)
