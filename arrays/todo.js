@@ -1,28 +1,49 @@
+// const todos = ['Let the dogs out.', 'Work out.', 'Buy food', 'Food shop.', 'Cook dinner.']
+//1. Convert array to Array of objects -> text, completed property (boolean)
 
-
-const todos = ['Let the dogs out.', 'Work out.', 'Pick up Rey.', 'Food shop.', 'Cook dinner.']
-
-//Delete the third item
-//Add a new item onto the end
-todos.splice(4,4,'Bake a Cake')
-
-//Remove the first item from the list
-todos.shift()
-
-console.log(`You have ${todos.length} todos!`)
-todos.forEach(
-    function(item,index){
-        console.log(index+1 + '. ' + item)
+const todos = [{
+        text: 'Let the dogs out.',
+        completed: false
+    },
+    {
+        text: 'Work out.',
+        completed: false
+    },
+    {
+        text: 'Buy food.',
+        completed: false
+    },
+    {
+        text: 'Food shop.',
+        completed: false
+    },
+    {
+        text: 'Cook dinner.',
+        completed: false
     }
-)
+]
 
-for (let count = 0; count < todos.length; count++  ) {
-    const num = count + 1
-    const todo = todos[count]
-    console.log(`${num}. ${todo}`)
+
+//2. Create a function that works with array of objects to remove a todo by text value
+
+// const findNote = function (notes, noteTitle) {
+//     const index = notes.findIndex(function (note, index) {
+//         return note.title.toLowerCase() === noteTitle.toLowerCase()
+//     })
+//     return notes[index]
+// }
+
+
+
+const deleteTodo = function (todos, todoText) {
+    const index = todos.findIndex(function (todo, index) {
+
+        return todo.text.toLowerCase() === todoText.toLowerCase()
+    })
+    return todos.splice(index, 1)
 }
 
-
-
-// console.log(`Todo 1: ${todos[0]}`)
-// console.log(`Todo 5: ${todos[4]}`)
+//Case insensitive search
+//Find a match - delete it.  Delete item from array based on its index.  
+deleteTodo(todos, 'buy food.')
+console.log(todos)
