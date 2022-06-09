@@ -36,7 +36,7 @@ const deleteTodo = function (todos, todoText) {
 //List of just the todos with completed value of false
 const getThingsToDo = function (todos) {
     return todos.filter(function (todo) {
-        return todo.completed === false
+        return !todo.completed
     })
 }
 
