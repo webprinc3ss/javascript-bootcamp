@@ -33,7 +33,15 @@ const deleteTodo = function (todos, todoText) {
     }
 }
 
+//List of just the todos with completed value of false
+const getThingsToDo = function (todos) {
+    return todos.filter(function (todo) {
+        return todo.completed === false
+    })
+}
+
+console.log(getThingsToDo(todos))
 //Case insensitive search
 //Find a match - delete it.  Delete item from array based on its index.  
-deleteTodo(todos, 'buy foods.')
-console.log(todos)
+// deleteTodo(todos, 'buy foods.')
+// console.log(todos)
