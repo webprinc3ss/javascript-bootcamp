@@ -23,8 +23,12 @@ const todos = [{
 
 //Challenge 2
 //print summary "You have 2 todos left." (p element)
-const totalTodos = document.createElement('p')
-totalTodos.textContent = `You have ${todos.length} todos left.`
+const incompleteTodos = todos.filter(function (todo) {
+    return !todo.completed
+})
+
+const totalTodos = document.createElement('h2')
+totalTodos.textContent = `You have ${incompleteTodos.length} todos left.`
 document.querySelector('body').appendChild(totalTodos)
 
 //Add a p for each todo above - use text value for each object
