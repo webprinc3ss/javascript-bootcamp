@@ -51,8 +51,9 @@ const sortTodos = function (todos) {
             return 0
         }
     })
-
 }
+
+
 
 sortTodos(todos)
 console.log(todos)
