@@ -38,8 +38,15 @@ todos.forEach(function (todo) {
     document.querySelector('body').appendChild(p)
 })
 
-const todo = document.createElement('p')
+//Listen for new todo creation
+document.querySelector('#add-todo').addEventListener('click', function (e) {
+    e.target.textContent = 'Todo added'
+})
 
+//Listen for todo text change
+document.querySelector('#search-todos').addEventListener('input', function (e) {
+    console.log(e.target.value)
+})
 
 //Challenge 1
 // const paragraphs = document.querySelectorAll('p')
