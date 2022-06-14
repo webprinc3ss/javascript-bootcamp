@@ -13,6 +13,31 @@ const notes = [{
     }
 ]
 
+const filters = {
+    searchText: ''
+}
+
+//Takes all of notes and filters and figurs out which one matches the filters
+const renderNotes = function (notes, filters) {
+    const filteredNotes = notes.filter(function (note) {
+        return note.title.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
+
+    //Clear div - wipes previously rendered notes
+    document.querySelector('#notes').innerHTML = ''
+
+
+    //Add just the filtered notes in
+    filteredNotes.forEach(function (note) {
+        const noteEl = document.createElement('p')
+        noteEl.textContent = note.title
+        document.querySelector('#notes').appendChild(noteEl)
+    })
+}
+
+//Call function once right away to make sure something shows up
+renderNotes(notes, filters)
+
 document.querySelector('#create-note').addEventListener('click', function (e) {
     e.target.textContent = 'The button was clicked'
     // console.log('Click')
@@ -28,8 +53,10 @@ document.querySelector('#remove-all').addEventListener('click', function () {
     })
 })
 
+//filter search in real time with input.  Calls function when user interacts with page.
 document.querySelector('#search-text').addEventListener('input', function (e) {
-    console.log(e.target.value)
+    filters.searchText = e.target.value
+    renderNotes(notes, filters)
 })
 
 // --Single --
