@@ -1,59 +1,59 @@
 const todos = [{
-        text: 'Let the dogs out.',
-        completed: false
-    },
-    {
-        text: 'Buy food.',
-        completed: true
-    },
-    {
-        text: 'Work out.',
-        completed: true
-    },
+    text: 'Order cat food',
+    completed: false
+}, {
+    text: 'Clean kitchen',
+    completed: true
+}, {
+    text: 'Buy food',
+    completed: true
+}, {
+    text: 'Do work',
+    completed: false
+}, {
+    text: 'Exercise',
+    completed: true
+}]
 
-    {
-        text: 'Food shop.',
-        completed: false
-    },
-    {
-        text: 'Cook dinner.',
-        completed: false
-    }
-]
+const filters = {
+    searchText: ''
+}
 
-//Challenge 2
-//print summary "You have 2 todos left." (p element)
-const incompleteTodos = todos.filter(function (todo) {
-    return !todo.completed
-})
+const renderTodos = function (todos, filters) {
+    const filteredTodos = todos.filter(function (todo) {
+        return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
 
-const totalTodos = document.createElement('h2')
-totalTodos.textContent = `You have ${incompleteTodos.length} todos left.`
-document.querySelector('body').appendChild(totalTodos)
+    const incompleteTodos = filteredTodos.filter(function (todo) {
+        return !todo.completed
+    })
 
-//Add a p for each todo above - use text value for each object
-todos.forEach(function (todo) {
-    let p = document.createElement('p')
-    p.textContent = todo.text
-    document.querySelector('body').appendChild(p)
-})
+    document.querySelector('#todos').innerHTML = ''
 
-//Listen for new todo creation
+    const summary = document.createElement('h2')
+    summary.textContent = `You have ${incompleteTodos.length} todos left`
+    document.querySelector('#todos').appendChild(summary)
+
+    filteredTodos.forEach(function (todo) {
+        const p = document.createElement('p')
+        p.textContent = todo.text
+        document.querySelector('#todos').appendChild(p)
+    })
+}
+
+renderTodos(todos, filters)
+
+// Listen for new todo creation
 document.querySelector('#add-todo').addEventListener('click', function (e) {
-    e.target.textContent = 'Todo added'
+    console.log('Add a new todo...')
 })
 
-//Listen for todo text change
-document.querySelector('#search-todos').addEventListener('input', function (e) {
+// Listen for todo text change
+document.querySelector('#new-todo-text').addEventListener('input', function (e) {
     console.log(e.target.value)
 })
 
-//Challenge 1
-// const paragraphs = document.querySelectorAll('p')
-// // console.log(paragraphs)
-
-// paragraphs.forEach(function (p) {
-//     if (p.textContent.includes("the")) {
-//         p.remove()
-//     }
-// })
+document.querySelector('#search-text').addEventListener('input', function (e) {
+    filters.searchText = e.target.value
+    renderTodos(todos, filters)
+})
