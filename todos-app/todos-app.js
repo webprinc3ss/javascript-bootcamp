@@ -47,12 +47,9 @@ renderTodos(todos, filters)
 document.querySelector('#add-todo').addEventListener('submit', function (e) {
     e.preventDefault()
     let newTask = e.target.elements.newTodoText.value
-    console.log(newTask)
-    let todoObj = { text: newTask, completed: false }
-    todos.push(todoObj)
+    todos.push({ text: newTask, completed: false })
     renderTodos(todos, filters)
     e.target.elements.newTodoText.value = ''
-
 })
 
 // Listen for todo text change
