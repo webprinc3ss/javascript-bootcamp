@@ -1,16 +1,16 @@
 const notes = [{
-        title: 'my next trip',
-        body: 'I would like to go to Spain'
-    },
-    {
-        title: 'Office modification',
-        body: 'Get a new seat'
-    },
-    {
-        title: 'Habbits to work on',
-        body: 'Exercise. Eating a bit better.'
+    title: 'my next trip',
+    body: 'I would like to go to Spain'
+},
+{
+    title: 'Office modification',
+    body: 'Get a new seat'
+},
+{
+    title: 'Habbits to work on',
+    body: 'Exercise. Eating a bit better.'
 
-    }
+}
 ]
 
 const filters = {
@@ -59,10 +59,8 @@ document.querySelector('#search-text').addEventListener('input', function (e) {
     renderNotes(notes, filters)
 })
 
-document.querySelector('#name-form').addEventListener('submit', function (e) {
-    e.preventDefault()
-    console.log(e.target.elements.firstName.value)
-    e.target.elements.firstName.value = ''
+document.querySelector("#forFun").addEventListener('change', function (e) {
+    console.log(e.target.checked)
 })
 
 // --Single --
