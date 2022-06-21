@@ -44,16 +44,31 @@ const renderTodos = function (todos, filters) {
 renderTodos(todos, filters)
 
 // Listen for new todo creation
-document.querySelector('#add-todo').addEventListener('click', function (e) {
-    console.log('Add a new todo...')
+document.querySelector('#add-todo').addEventListener('submit', function (e) {
+    e.preventDefault()
+    let newTask = e.target.elements.newTodoText.value
+    console.log(newTask)
+    let todoObj = { text: newTask, completed: false }
+    todos.push(todoObj)
+    renderTodos(todos, filters)
+    e.target.elements.newTodoText.value = ''
+
 })
 
 // Listen for todo text change
-document.querySelector('#new-todo-text').addEventListener('input', function (e) {
-    console.log(e.target.value)
-})
+// document.querySelector('#new-todo-text').addEventListener('input', function (e) {
+//     console.log(e.target.value)
+// })
+
 
 document.querySelector('#search-text').addEventListener('input', function (e) {
     filters.searchText = e.target.value
     renderTodos(todos, filters)
 })
+
+// Challenge 4
+// Create a form with a single input for todo text
+// Setup a submit handler and cancel the default action
+// Add a new item to the todos array with that text data (completed value of false)
+// Rerender the application
+//Clear the input field value
