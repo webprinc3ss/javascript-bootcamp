@@ -16,12 +16,21 @@ const todos = [{
 }]
 
 const filters = {
-    searchText: ''
+    searchText: '',
+    hideCompleted: false
 }
 
 const renderTodos = function (todos, filters) {
-    const filteredTodos = todos.filter(function (todo) {
+    let filteredTodos = todos.filter(function (todo) {
         return todo.text.toLowerCase().includes(filters.searchText.toLowerCase())
+    })
+
+    filteredTodos = filteredTodos.filter(function (todo) {
+        if (filters.hideCompleted) {
+            return !todo.completed
+        } else {
+            return true
+        }
     })
 
     const incompleteTodos = filteredTodos.filter(function (todo) {
@@ -43,6 +52,7 @@ const renderTodos = function (todos, filters) {
 
 renderTodos(todos, filters)
 
+
 // Listen for new todo creation
 document.querySelector('#add-todo').addEventListener('submit', function (e) {
     e.preventDefault()
@@ -52,20 +62,18 @@ document.querySelector('#add-todo').addEventListener('submit', function (e) {
     e.target.elements.newTodoText.value = ''
 })
 
-// Listen for todo text change
-// document.querySelector('#new-todo-text').addEventListener('input', function (e) {
-//     console.log(e.target.value)
-// })
-
-
 document.querySelector('#search-text').addEventListener('input', function (e) {
     filters.searchText = e.target.value
     renderTodos(todos, filters)
 })
 
-// Challenge 4
-// Create a form with a single input for todo text
-// Setup a submit handler and cancel the default action
-// Add a new item to the todos array with that text data (completed value of false)
-// Rerender the application
-//Clear the input field value
+document.querySelector('#hide-completed').addEventListener('change', function (e) {
+    filters.hideCompleted = e.target.checked
+    renderTodos(todos, filters)
+})
+
+// Challenge 5
+// 1. Create a checkbox and setup event listener > "Hide Completed"
+// 2. Create new hideCompleted filter (default false)
+// 3. Update hideCompleted on rerender list on checkbox change.
+// 4. Setup renderTodos to remove completed items.
