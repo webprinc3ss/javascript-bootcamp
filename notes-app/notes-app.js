@@ -1,4 +1,4 @@
-const notes = [{
+let notes = [{
     title: 'my next trip',
     body: 'I would like to go to Spain'
 },
@@ -17,6 +17,27 @@ const filters = {
     searchText: ''
 }
 
+// const user = {
+//     name: 'Danielle',
+//     age: 53
+// }
+
+// const userJSON = JSON.stringify(user)
+// console.log(userJSON)
+
+// localStorage.setItem('user', userJSON)
+
+// const userJSON = localStorage.getItem('user')
+// const user = JSON.parse(userJSON)
+// console.log(`${user.name} is ${user.age}`)
+
+//Check for existing saved data
+const notesJSON = localStorage.getItem('notes')
+
+if (notesJSON != null) {
+    notes = JSON.parse(notesJSON)
+}
+
 //Takes all of notes and filters and figurs out which one matches the filters
 const renderNotes = function (notes, filters) {
     const filteredNotes = notes.filter(function (note) {
@@ -30,7 +51,12 @@ const renderNotes = function (notes, filters) {
     //Add just the filtered notes in
     filteredNotes.forEach(function (note) {
         const noteEl = document.createElement('p')
-        noteEl.textContent = note.title
+        if (note.title.length > 0) {
+            noteEl.textContent = note.title
+        } else {
+            noteEl.textContent = 'Unnamed Note'
+        }
+
         document.querySelector('#notes').appendChild(noteEl)
     })
 }
@@ -39,21 +65,17 @@ const renderNotes = function (notes, filters) {
 renderNotes(notes, filters)
 
 document.querySelector('#create-note').addEventListener('click', function (e) {
-    e.target.textContent = 'The button was clicked'
+    notes.push({
+        title: '',
+        body: ''
+    })
+    localStorage.setItem('notes', JSON.stringify(notes))
+    renderNotes(notes, filters)
+    // e.target.textContent = 'The button was clicked'
     // console.log('Click')
     // console.log(e)
 })
 
-// document.querySelector('#remove-all').addEventListener('click', function () {
-//     console.log('Delete all notes')
-
-//     document.querySelectorAll('.note').forEach(function (note) {
-//         console.log('Delete all notes')
-//         note.remove()
-//     })
-// })
-
-//filter search in real time with input.  Calls function when user interacts with page.
 document.querySelector('#search-text').addEventListener('input', function (e) {
     filters.searchText = e.target.value
     renderNotes(notes, filters)
@@ -63,45 +85,21 @@ document.querySelector("#forFun").addEventListener('change', function (e) {
     console.log(e.target.checked)
 })
 
-// --Single --
-// p
-// #replace
-// .item
+document.querySelector("#filter-by").addEventListener('change', function (e) {
 
-//Multiple
-// p# order
-// button.inventory
-// h1# title.application
-// h1.application# title
+    console.log(e.target.value)
 
 
+})
 
-// document.querySelectorAll('#create-note')[1].addEventListener('click', function () {
-//     console.log('Delete all notes')
-// })
+var cookies = ['Oatmeal', 'Chocolate Chip', 'Peanut Butter', 'Double Chocolate', 'M&M']
 
+// //For Loop
+// for (var i = 0; i < cookies.length; i++) {
+//     console.log('The cookie is ' + cookies[i] + '<br>')
+// }
 
-
-//DOM - Document Object Model
-
-//Query and remove
-// const p = document.querySelector('p') //Matches first match it finds.
-// p.remove()
-
-//Query all and remove
-
-// const ps = document.querySelectorAll('p')
-
-// ps.forEach(function (p) {
-//     p.textContent = '*****'
-// })
-
-//Add an element below - 3 steps
-//1. Add a new element
-// const newParagraph = document.createElement('p')
-
-//2. Give meaningful content
-// newParagraph.textContent = 'This is a new element from JS.'
-
-//3. Pick a place to put it and put it there.
-// document.querySelector('body').appendChild(newParagraph)
+//For Each loop
+cookies.forEach(function (cookie) {
+    console.log('The cookie is ' + cookie + '<br>')
+});
