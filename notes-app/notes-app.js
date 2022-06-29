@@ -1,17 +1,4 @@
-let notes = [{
-    title: 'my next trip',
-    body: 'I would like to go to Spain'
-},
-{
-    title: 'Office modification',
-    body: 'Get a new seat'
-},
-{
-    title: 'Habbits to work on',
-    body: 'Exercise. Eating a bit better.'
-
-}
-]
+let notes = []
 
 const filters = {
     searchText: ''

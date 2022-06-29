@@ -1,23 +1,18 @@
-const todos = [{
-    text: 'Order cat food',
-    completed: false
-}, {
-    text: 'Clean kitchen',
-    completed: true
-}, {
-    text: 'Buy food',
-    completed: true
-}, {
-    text: 'Do work',
-    completed: false
-}, {
-    text: 'Exercise',
-    completed: true
-}]
+//1. Delete Dummy data
+//2. Read and parse data when app starts up
+//3. Stringify and write the data when data is added
 
+let todos = []
 const filters = {
     searchText: '',
     hideCompleted: false
+}
+
+const todosJSON = localStorage.getItem('todos')
+
+if (todosJSON != null) {
+    todos = JSON.parse(todosJSON)
+
 }
 
 const renderTodos = function (todos, filters) {
@@ -40,7 +35,12 @@ const renderTodos = function (todos, filters) {
 
     filteredTodos.forEach(function (todo) {
         const p = document.createElement('p')
-        p.textContent = todo.text
+        if (todo.text.length > 0) {
+            p.textContent = todo.text
+        } else {
+            p.textContent = 'Unnamed Todo'
+        }
+
         document.querySelector('#todos').appendChild(p)
     })
 }
@@ -53,6 +53,7 @@ document.querySelector('#add-todo').addEventListener('submit', function (e) {
     e.preventDefault()
     let newTask = e.target.elements.newTodoText.value
     todos.push({ text: newTask, completed: false })
+    localStorage.setItem('todos', JSON.stringify(todos))
     renderTodos(todos, filters)
     e.target.elements.newTodoText.value = ''
 })
@@ -67,8 +68,4 @@ document.querySelector('#hide-completed').addEventListener('change', function (e
     renderTodos(todos, filters)
 })
 
-// Challenge 5
-// 1. Create a checkbox and setup event listener > "Hide Completed"
-// 2. Create new hideCompleted filter (default false)
-// 3. Update hideCompleted on rerender list on checkbox change.
-// 4. Setup renderTodos to remove completed items.
+
